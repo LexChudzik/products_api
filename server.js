@@ -12,13 +12,28 @@ app.get('/products', (req, res)=>{
     const sqlText= `SELECT * FROM products;`;
     pool.query(sqlText)
     .then( (result) => {
-      console.log(`Got products back from the database`, result.rows);
+      console.log(`Got all products from the database`, result.rows);
       res.send(result.rows);
     })
     .catch( (error) => {
       console.log(`Error making database query ${sqlText}`, error);
       res.sendStatus(500);
     })
+})
+
+app.get('/products/:id', (req, res) => {
+    let reqId = req.params.id;
+    console.log('Get request for id', reqId);
+    let sqlText = 'SELECT * FROM products WHERE id=$1;';
+    pool.query(sqlText, [reqId])
+        .then((result) => {
+            console.log('Got product from database:', result.rows);
+            res.send(result.rows);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500);
+        })
 })
 
 //add product
@@ -36,7 +51,6 @@ app.post('/products', (req, res)=>{
             res.sendStatus(500);
     })
 });
-
 
 
 app.listen(PORT, () => {
