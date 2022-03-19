@@ -21,8 +21,10 @@ DATABASE_PORT=
 ```
 
 Start the server:
-```npm install
-npm start```
+```
+npm install
+npm start
+```
 
 ## Requests
 
