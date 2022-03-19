@@ -81,6 +81,21 @@ app.put('/products/:id', (req, res) => {
         })
 })
 
+// delete a product
+app.delete('/products/:id', (req, res) => {
+    const reqId = req.params.id;
+    const sqlText = `DELETE FROM products WHERE id=$1;`;
+    pool.query(sqlText, [reqId])
+        .then((result) => {
+            console.log(`deleted product from database`, reqId);
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500);
+        })
+})
+
 app.listen(PORT, () => {
     console.log('Listening on port: ', PORT);
 });
