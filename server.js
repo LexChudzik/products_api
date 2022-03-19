@@ -9,8 +9,20 @@ app.use(bodyParser.json());
 
 //get list of products
 app.get('/products', (req, res)=>{
-    const sqlText= `SELECT * FROM products;`;
-    pool.query(sqlText)
+    console.log('hello', req.query);
+    let query = {};
+    if (req.query.name) {
+        query = {
+            text: `SELECT * FROM products WHERE name=$1`,
+            values: [req.query.name]
+        }
+    } else {
+        query = {
+            text: 'SELECT * FROM products;'
+        }
+    }
+
+    pool.query(query)
     .then( (result) => {
       console.log(`Got all products from the database`, result.rows);
       res.send(result.rows);
