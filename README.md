@@ -28,22 +28,22 @@ npm start
 
 ## Requests
 
-- GET /products
+- GET /products \\
 Get all products
 
-- GET /products?name={name}
+- GET /products?name={name} \\
 Get any products with a matching name
 
-- GET /products/{id}
+- GET /products/{id} \\
 Get product by id
 
-- POST /products
-Add a product
+- POST /products \\
+Add a product \\
 Body of the request should contain a JSON object with the name and price
 
-- PUT /products/{id}
-Update a product by id
+- PUT /products/{id} \\
+Update a product by id \\
 Body of the request should contain a JSON object with the name and price
 
-- DELETE /products/{id}
+- DELETE /products/{id} \\
 Delete a product by id
