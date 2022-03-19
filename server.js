@@ -33,6 +33,7 @@ app.get('/products', (req, res)=>{
     })
 })
 
+//get product by id
 app.get('/products/:id', (req, res) => {
     let reqId = req.params.id;
     console.log('Get request for id', reqId);
@@ -64,6 +65,21 @@ app.post('/products', (req, res)=>{
     })
 });
 
+//update a product
+app.put('/products/:id', (req, res) => {
+    let reqId = req.params.id;
+    let product = req.body;
+    let sqlText = `UPDATE products SET name=$1, price=$2 WHERE id=$3`;
+    pool.query(sqlText, [product.name, product.price, reqId])
+        .then((result)=>{
+            console.log('product updated');
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500);
+        })
+})
 
 app.listen(PORT, () => {
     console.log('Listening on port: ', PORT);
