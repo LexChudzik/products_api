@@ -19,3 +19,5 @@ CREATE TABLE products (
     "price" NUMERIC (15,2) NOT NULL
 );
 ```
+
+create .env file with postgres user and password

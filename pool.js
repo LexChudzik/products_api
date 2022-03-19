@@ -1,11 +1,14 @@
 const pg = require('pg');
+require('dotenv').config();
 
 const Pool = pg.Pool;
 
 const pool = new Pool({
-    database: 'products',
-    host: 'localhost',
-    port: 5432,
+    user: process.env.PG_USER || null,
+    password: process.env.PG_PASSWORD || null,
+    database: process.env.DATABSE_NAME || 'products',
+    host: process.env.DATABASE_SERVER || 'localhost',
+    port:  process.env.DATABASE_PORT || 5432,
     max: 10,
     idleTimeoutMillis: 30000 
 });
