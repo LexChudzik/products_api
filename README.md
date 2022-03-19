@@ -1,6 +1,4 @@
-# shipt_backend_takehome
-
-# Database  Setup
+# Setup
 
 Create postgres database:
 
@@ -20,4 +18,15 @@ CREATE TABLE products (
 );
 ```
 
-create .env file with postgres user and password
+Create .env file with postgres user and password, plus database name, host and port if they are different from the defaults:
+```
+PG_PASSWORD=
+PG_USER=
+DATABSE_NAME=
+DATABASE_SERVER=
+DATABASE_PORT=
+```
+
+Start the server:
+```npm install
+npm start```
