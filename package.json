@@ -1,0 +1,22 @@
+{
+  "name": "shipt_backend_takehome",
+  "version": "1.0.0",
+  "main": "sever.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LexChudzik/shipt_backend_takehome.git"
+  },
+  "author": "Lex Chudzik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LexChudzik/shipt_backend_takehome/issues"
+  },
+  "homepage": "https://github.com/LexChudzik/shipt_backend_takehome#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "pg": "^8.7.3"
+  }
+}
